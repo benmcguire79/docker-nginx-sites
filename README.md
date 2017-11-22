@@ -1,4 +1,4 @@
-# docker-tor
+# docker-nginx-sites
 
 Docker image for official Wordpress docker container served by NGINX web server.
 
@@ -26,7 +26,7 @@ Other variables can be used if supporte by the choosen template file, e.g.
 It serve the default Nginx static site. Supported environment variables below:
 
 - NGINX_PORT=<e.g. 80> (default 80)
-- NGINX_HOST=<example.org> (default _)
+- NGINX_HOST=<example.org> (default '_')
 - NGINX_ROOTDIR=<path> (default /usr/share/nginx/html)
 
 #### WORDPRESS template
@@ -35,7 +35,7 @@ It serve the official Wordpress PHP-FPM docker container that should be already 
 
 - NGINX_SITE=wordpress
 - NGINX_PORT=<e.g. 80> (default 80)
-- NGINX_HOST=<example.org> (default _)
+- NGINX_HOST=<example.org> (default '_')
 - NGINX_ROOTDIR=<path> (default /var/www/html)
 - PHP_FPM_CONTAINER_NAME=<wordpress-fpm_container_name> (default wordpress)
 - PHP_FPM_CONTAINER_PORT=<wordpress-fpm_port> (default 9000)
