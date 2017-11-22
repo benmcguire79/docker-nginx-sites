@@ -1,11 +1,10 @@
 #!/bin/bash
 
-for i in $(env |grep '^NGINX_SITES'| awk -F'=' '{print $2}' | sed 's/,/ /g' | sed 's/\"//g'`)
-do
-  envsubst < /etc/nginx/conf.d/$i.template > /etc/nginx/conf.d/$i.conf
-done
+rm -f /etc/nginx/conf.d/default.conf
 
-rm -f /etc/nginx/conf.d/*.template
-[ $(env |grep ^NGINX_SITES) ] && rm -f /etc/nginx/conf.d/default.conf
+. /etc/nginx/conf.d/${NGINX_SITE:="default"}.env
+envsubst "$NGINX_VARS" < /etc/nginx/conf.d/${NGINX_SITE:="default"}.template > /etc/nginx/conf.d/${NGINX_SITE:="default"}.conf
+
+rm -f /etc/nginx/conf.d/*.template /etc/nginx/conf.d/*.env
 
 exec "$@"
